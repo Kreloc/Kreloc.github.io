@@ -36,4 +36,4 @@ permalink: /monthview/
 
 
 {% endfor %}
-</div>
+
