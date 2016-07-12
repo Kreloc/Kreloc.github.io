@@ -1,10 +1,14 @@
 ---
 layout: post
 title: My First Post
-published: false
+published: true
 date: 2016-07-12
 categories: [blogging]
 tags: [blogging]
 ---
 
 Test
+
+```powershell
+    Get-Date
+```
