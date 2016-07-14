@@ -52,4 +52,4 @@ DinnerList:
 * Tacos
 * Shrimp scampi
 * White bean chicken chili
-* Chicken wings* 
+* Chicken wings
