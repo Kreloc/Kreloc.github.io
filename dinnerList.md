@@ -1,5 +1,5 @@
 ---
-title: Dinner List
+title: DinnerList
 permalink: /dinner list/
 layout: page
 ---
