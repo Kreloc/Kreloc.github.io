@@ -1,6 +1,6 @@
 ---
 title: DinnerList
-permalink: /dinner list/
+permalink: /dinnerlist/
 layout: page
 ---
 DinnerList:
