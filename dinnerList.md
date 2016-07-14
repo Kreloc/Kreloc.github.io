@@ -4,11 +4,17 @@ permalink: /dinnerlist/
 layout: page
 ---
 DinnerList:
+
 *breakfast burritos
+
 *chicken enchiladas
+
 *fajitas
+
 *kalua pork
+
 *lasagna
+
 *mac & cheese
 *manicotti
 *meatloaf
