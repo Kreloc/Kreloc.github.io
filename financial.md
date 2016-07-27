@@ -1,6 +1,6 @@
 ---
 title: Cheaper Phone Bill
-permalink: /financial
+permalink: /financial/
 layout: page
 ---
 
