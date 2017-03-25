@@ -7,7 +7,7 @@ permalink: /about/
 
 ### Information About Me
 
-I'm a systems administrator that has regularly been using PowerShell for the past three years.
+I'm a systems administrator that has regularly been using PowerShell for the past four years.
 
 ### Contact me
 
