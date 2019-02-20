@@ -9,6 +9,4 @@ permalink: /about/
 
 I'm a systems administrator that has regularly been using PowerShell for the past four years.
 
-### Contact me
 
-[mrince@outlook.com](mailto:mrince@outlook.com)
