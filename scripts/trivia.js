@@ -59,11 +59,11 @@ fetch(proxyUrl + triviaUri + "categories?count=6&offset=" + offset)
     console.table(data);
     console.log(JSON.stringify(data));
     // document.querySelector("pre").innerHTML = JSON.stringify(data, null, 2);
-    clueCategories += '<ul class="clueCategory">'
-    data.forEach(x => clueCategories += '<li><a href="#" onClick="getCluesByCategoryId(' + x.id + ')">' + x.title + "</a></li>");
+    //clueCategories += '<ul class="clueCategory">'
+    data.forEach(x => clueCategories += '<div class="column"><a href="#" onClick="getCluesByCategoryId(' + x.id + ')">' + x.title + "</a><div id=" + '"c' + x.id + '"></div></div>');
     data.forEach(x => clueCategoriesData.push(x));
     clueCategoriesData.forEach(x => getCluesByCategoryIdForData(x.id));
-    clueCategories += '</ul>'
+    // clueCategories += '</ul>'
     document.getElementById("categories").innerHTML = clueCategories;
     //return data;
   })
@@ -109,7 +109,7 @@ function getCluesByCategoryId(id)
         foundClues.forEach(x => clues += '<li class="clueValue"><a href="#" onClick="unHideElement(' + "'q" + x.id + "'" + ')">$' + x.value + '</a></li>' + '<li id="q' + x.id + '" class="clueQuestion">' + '<a href="#" onClick="unHideElement(' + "'a" + x.id + "'" + ')">' + x.question + '</a></li><li id="a' + x.id + '" ' + 'class="clueAnswer">' +  x.answer + "</li>"
         );
         clues += '</ul>'
-        document.getElementById("catClues").innerHTML = clues;
+        document.getElementById("c" + id).innerHTML = clues;
     }
 }
 
@@ -119,7 +119,11 @@ function unHideElement(identifier)
     //var changeThese = document.getElementsByClassName("clueQuestion")    
     if (identifier.includes("q")) {
         // light up the buzz in button
+        // get the parent element id
+        //var pickedClue = document.getElementById(identifier)
+        
         pickedClueId = identifier.substring(1);
+        findCategoryId(pickedClueId);
         document.getElementById("userAnswerButton").style = "visibility: visible;"
         document.getElementById("userAnswerButton").innerHTML = '<button onclick="performBuzzIn(' + pickedCategoryId +',' + pickedClueId + ')" id="' + pickedCategoryId + pickedClueId +'">Buzz In</button>'
     }
@@ -166,3 +170,19 @@ function performBuzzIn(categoryId, clueId)
 
 }
 
+var foundAnId = "";
+function findCategoryId(clueId) {
+    foundAnId = "";
+    for (let index = 0; index < clueCategoryCluesData.length; index++) {
+        const element = clueCategoryCluesData[index];
+        console.log(element);
+        for (let otherIndex = 0; otherIndex < element.clues.length; otherIndex++) {
+            const clueElement = element.clues[otherIndex];
+            console.log(clueElement);
+            if (clueElement.id == clueId) {
+                foundAnId = element.id
+            }
+        }
+        
+    }
+}
