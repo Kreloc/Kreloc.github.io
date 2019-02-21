@@ -33,7 +33,16 @@ var score = 0;
 //     return e;
 //   });
 // }
-
+var onlyTheseClues = [];
+function getOnlyFive(foundClues)
+{
+    // empty the variable before filling it
+    onlyTheseClues = [];
+    for (let index = 0; index < getTheseValues.length; index++) {
+        const element = getTheseValues[index];
+        onlyTheseClues.push(foundClues.find(x => x.value == element));
+    }
+}
 function getRandom5() {
     return getRandomInt(1, 50) * 5; // Returns 10, 20, 30, 40 or 50
 }
@@ -91,7 +100,10 @@ function getCluesByCategoryId(id)
     if (foundClues != null) {
         if (foundClues.length > 5) {
             // TODO: do stuff to eliminate duplicate scores
+            getOnlyFive(foundClues);
+            foundClues = onlyTheseClues;
         }
+
         clues = "";
         clues = '<ul class="theClues">';
         foundClues.forEach(x => clues += '<li class="clueValue"><a href="#" onClick="unHideElement(' + "'q" + x.id + "'" + ')">$' + x.value + '</a></li>' + '<li id="q' + x.id + '" class="clueQuestion">' + '<a href="#" onClick="unHideElement(' + "'a" + x.id + "'" + ')">' + x.question + '</a></li><li id="a' + x.id + '" ' + 'class="clueAnswer">' +  x.answer + "</li>"
@@ -153,3 +165,4 @@ function performBuzzIn(categoryId, clueId)
     document.getElementById("userAnswerButton").style = "visibility: hidden;"
 
 }
+
