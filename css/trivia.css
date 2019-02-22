@@ -34,7 +34,7 @@ ul {
     border-bottom:none
 } */
 
-.clueValue {
+.clueValue a {
     box-shadow:0 2px 5px 0 rgba(44, 130, 201, 1),0 2px 10px 0 rgba(44, 130, 201, 1);
     background-color: rgba(44, 130, 201, 1);
 }
@@ -50,7 +50,20 @@ ul {
     text-decoration: none;
 }
 /* rgba(44, 130, 201, 1) */
-
+#catClues {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+.userStuff {
+    position: fixed;
+    top: 80%;
+    left: 80%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
 /* #userArea button {
     visibility: hidden;
 } */
