@@ -10,30 +10,10 @@ var clueAnswers = [];
 var pickedCategoryId = "";
 var pickedClueId = "";
 var getTheseValues = [200,400,600,800,1000];
-//
-// gather and cache all the data before displaying any of it?
-// var player = {
-//     score = 0,
-
-// }
 var score = 0;
-// function getRandomJService()
-// {
-// fetch(proxyUrl + triviaUri + "random")   
-//   .then(blob => blob.json())
-//   .then(data => {
-//     console.table(data);
-//     console.log(JSON.stringify(data));
-//     // document.querySelector("pre").innerHTML = JSON.stringify(data, null, 2);
-//     document.getElementById("randomTrivia").innerHTML = data[0].question + "<br />" + data[0].answer;
-//     //return data;
-//   })
-//   .catch(e => {
-//     console.log(e);
-//     return e;
-//   });
-// }
 var onlyTheseClues = [];
+var foundAnId = "";
+
 function getOnlyFive(foundClues)
 {
     // empty the variable before filling it
@@ -44,7 +24,7 @@ function getOnlyFive(foundClues)
     }
 }
 function getRandom5() {
-    return getRandomInt(1, 50) * 5; // Returns 10, 20, 30, 40 or 50
+    return getRandomInt(1, 50) * 5;
 }
     
 function getRandomInt(min, max) {
@@ -56,16 +36,10 @@ console.log("Offset is set at " + offset);
 fetch(proxyUrl + triviaUri + "categories?count=6&offset=" + offset)   
   .then(blob => blob.json())
   .then(data => {
-    console.table(data);
-    console.log(JSON.stringify(data));
-    // document.querySelector("pre").innerHTML = JSON.stringify(data, null, 2);
-    //clueCategories += '<ul class="clueCategory">'
     data.forEach(x => clueCategories += '<div class="column"><a href="#" onClick="getCluesByCategoryId(' + x.id + ')">' + x.title + "</a><div id=" + '"c' + x.id + '"></div></div>');
     data.forEach(x => clueCategoriesData.push(x));
     clueCategoriesData.forEach(x => getCluesByCategoryIdForData(x.id));
-    // clueCategories += '</ul>'
     document.getElementById("categories").innerHTML = clueCategories;
-    //return data;
   })
   .catch(e => {
     console.log(e);
@@ -79,10 +53,7 @@ function getCluesByCategoryIdForData(id)
     fetch(proxyUrl + triviaUri + "category?id=" + id)   
     .then(blob => blob.json())
     .then(data => {
-      console.table(data);
-      console.log(JSON.stringify(data));
       clueCategoryCluesData.push(data);
-      //data.clues.forEach(x => clueCategoryCluesData.push(x));
     })
     .catch(e => {
         console.log(e);
@@ -92,18 +63,16 @@ function getCluesByCategoryIdForData(id)
 
 function getCluesByCategoryId(id)
 {
-    emptyDiv("catClues");
+    document.getElementById("catClues").innerHTML = "";
     pickedCategoryId = id;
     var foundClues = clueCategoryCluesData.find(x => x.id == id);
     foundClues = foundClues.clues.filter(x => getTheseValues.includes(x.value))
     .sort(function(a, b){return a.value - b.value});
     if (foundClues != null) {
         if (foundClues.length > 5) {
-            // TODO: do stuff to eliminate duplicate scores
             getOnlyFive(foundClues);
             foundClues = onlyTheseClues;
         }
-
         clues = "";
         clues = '<ul class="theClues">';
         foundClues.forEach(x => clues += '<li class="clueValue"><a href="#" onClick="unHideElement(' + "'q" + x.id + "'" + ')">$' + x.value + '</a></li>' + '<li id="q' + x.id + '" class="clueQuestion">' + '<a href="#" onClick="unHideElement(' + "'a" + x.id + "'" + ')">' + x.question + '</a></li><li id="a' + x.id + '" ' + 'class="clueAnswer">' +  x.answer + "</li>"
@@ -114,14 +83,9 @@ function getCluesByCategoryId(id)
 }
 
 function unHideElement(identifier)
-{
-    // function to add style elements to html tags directly as those will override the css file?
-    //var changeThese = document.getElementsByClassName("clueQuestion")    
+{ 
     if (identifier.includes("q")) {
-        // light up the buzz in button
-        // get the parent element id
-        //var pickedClue = document.getElementById(identifier)
-        
+        // light up the buzz in button        
         pickedClueId = identifier.substring(1);
         findCategoryId(pickedClueId);
         document.getElementById("userAnswerButton").style = "visibility: visible;"
@@ -129,56 +93,41 @@ function unHideElement(identifier)
     }
     document.getElementById(identifier).style = "visibility: visible;"
 }
-function hideElement(identifier)
-{
-    document.getElementById(identifier).style = "visibility: hidden;"
-}
-
-
-function emptyDiv(id)
-{
-    // empty a div using id
-    document.getElementById(id).innerHTML = "";
-}
 
 function performBuzzIn(categoryId, clueId)
 {
-    // get the right set of clues
     var userAnswer = prompt("Please enter your answer");
+    // perform same stripping of 'extra' characters as done on the clue
+    // now if user enters: the Crusaders, checks only for Crusaders
+    userAnswer = userAnswer.toLocaleLowerCase().replace('"',"").replace('an ',"").replace('<i>',"").replace('</i>',"").replace('the ',"").replace("a ","");
+    console.log("The user answer being checked has become " + userAnswer);
     var foundClues = clueCategoryCluesData.find(x => x.id == categoryId);
     var clueAnswer = foundClues.clues.find(x => x.id == clueId);
-    if (clueAnswer.answer == userAnswer) {
+    // move back to direct comparison, except due some replacing on the clue answer to get rid of silly things.
+    var checkAgainstThisAnswer = clueAnswer.answer.toLocaleLowerCase().replace('"',"").replace('an ',"").replace('<i>',"").replace('</i>',"").replace('the ',"").replace("a ","");
+    console.log("The clue answer being checked against has become " + checkAgainstThisAnswer);
+
+    if (checkAgainstThisAnswer == userAnswer) {
         alert("You answered correctly!");
-        if (clueAnswer.value != null) {
-            score = score + clueAnswer.value;    
-        }
-        
+        score = score + clueAnswer.value;
     }
     else {
-        console.log("Not the correct answer. Needs exact match for now");
+        console.log("Not the correct answer. Uses direct match stripping out the, an, a, quote marks, and <i> tags");
         alert("You answered incorrectly :(");
-        if (clueAnswer.value != null) {
-            score = score - clueAnswer.value;    
-        }        
+        score = score - clueAnswer.value;
     }
     unHideElement("a" + clueId);
-    // hideElement(pickedCategoryId + pickedClueId);
     console.log("Player currently has a score of " + score);
     document.getElementById("userArea").innerText = "Current score is: " + score;
-    // simply empty the userArea div each time to get rid of the button?
     document.getElementById("userAnswerButton").style = "visibility: hidden;"
-
 }
 
-var foundAnId = "";
 function findCategoryId(clueId) {
     foundAnId = "";
     for (let index = 0; index < clueCategoryCluesData.length; index++) {
         const element = clueCategoryCluesData[index];
-        console.log(element);
         for (let otherIndex = 0; otherIndex < element.clues.length; otherIndex++) {
             const clueElement = element.clues[otherIndex];
-            console.log(clueElement);
             if (clueElement.id == clueId) {
                 foundAnId = element.id
             }
