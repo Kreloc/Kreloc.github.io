@@ -78,7 +78,7 @@ function getCluesByCategoryId(id)
         }
         clues = "";
         clues = '<ul class="theClues">';
-        foundClues.forEach(x => clues += '<li class="clueValue"><a href="#" onClick="displayClue(' + "'" + x.id + "'" + ')">$' + x.value + '</a></li>');
+        foundClues.forEach(x => clues += '<li class="clueValue" id="v' + x.id + '"><a href="#" onClick="displayClue(' + "'" + x.id + "'" + ')">$' + x.value + '</a></li>');
         clues += '</ul>';
         document.getElementById("c" + id).innerHTML = clues;
     }
@@ -86,6 +86,8 @@ function getCluesByCategoryId(id)
 
 function displayClue(identifier) {
     document.getElementById("categories").style = "visibility: hidden;";
+    // remove item clicked on
+    document.getElementById("v" + identifier).innerHTML = "";
     var divToEdit = document.getElementById("catClues");
     var onlyOneClue = getClueById(identifier);
     divToEdit.innerHTML = '<div class="clueQuestionAlt">' + onlyOneClue.question + '</div>';
