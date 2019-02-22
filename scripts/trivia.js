@@ -15,7 +15,6 @@ var onlyTheseClues = [];
 var foundAnId = "";
 var timeCount = 11;
 
-// TODO: Bugfix for timer after buzz in button used. Loops through timer on main page afterwards that needs to finsih before going to next clue.
 function getOnlyFive(foundClues)
 {
     // empty the variable before filling it
@@ -173,9 +172,10 @@ function performBuzzIn(clueId)
         score = score - clueAnswer.value;
     }
     // timeCount = 11;
-    timeCount = 1;
+    
     console.log("Player currently has $" + score);
     document.getElementById("userArea").innerText = "Player currently has $" + score;
-    displayAnswer(clueId);
+    timeCount = 1;
+    // let the timeout display the answer
 }
 
