@@ -1,19 +1,22 @@
 const triviaUri = 'http://jservice.io/api/';
-var proxyUrl = 'https://cors-anywhere.herokuapp.com/';
+const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
 
-var clueCategories = "";
-var clues = "";
-var offset = 0;
-var clueCategoriesData = [];
-var clueCategoryCluesData = [];
-var clueAnswers = [];
-var pickedCategoryId = "";
-var pickedClueId = "";
-var getTheseValues = [200,400,600,800,1000];
-var score = 0;
-var onlyTheseClues = [];
-var foundAnId = "";
-var timeCount = 11;
+let clueCategories = "";
+let clues = "";
+let offset = 0;
+let clueCategoriesData = [];
+let clueCategoryCluesData = [];
+let clueAnswers = [];
+let pickedCategoryId = "";
+let pickedClueId = "";
+let getTheseValues = [200,400,600,800,1000];
+let score = 0;
+let onlyTheseClues = [];
+let foundAnId = "";
+let timeCount = 11;
+
+// TODO: Reduce amount of time answer is displayed
+// TODO: Deal with answers that have values inside ()...typically these are not the answer rather an explanation of how it fits the clue category.
 
 function getOnlyFive(foundClues)
 {
@@ -67,7 +70,7 @@ function getCluesByCategoryId(id)
 {
     document.getElementById("catClues").innerHTML = "";
     pickedCategoryId = id;
-    var foundClues = clueCategoryCluesData.find(x => x.id == id);
+    let foundClues = clueCategoryCluesData.find(x => x.id == id);
     foundClues = foundClues.clues.filter(x => getTheseValues.includes(x.value))
     .sort(function(a, b){return a.value - b.value});
     if (foundClues != null) {
@@ -87,8 +90,8 @@ function displayClue(identifier) {
     document.getElementById("categories").style = "visibility: hidden;";
     // remove item clicked on
     document.getElementById("v" + identifier).innerHTML = "";
-    var divToEdit = document.getElementById("catClues");
-    var onlyOneClue = getClueById(identifier);
+    let divToEdit = document.getElementById("catClues");
+    let onlyOneClue = getClueById(identifier);
     divToEdit.innerHTML = '<div class="clueQuestionAlt">' + onlyOneClue.question + '</div>';
     document.getElementById("userAnswerButton").style = "visibility: visible;"
     document.getElementById("userAnswerButton").innerHTML = '<button onclick="performBuzzIn(' + onlyOneClue.id + ')">Buzz In</button>'
@@ -96,8 +99,8 @@ function displayClue(identifier) {
 }
 
 function getClueById(identifier) {
-    var thisCatId = clueCategoryCluesData.find(x => x.clues.find(y => y.id == identifier));
-    var foundClues = clueCategoryCluesData.find(x => x.id == thisCatId.id);
+    let thisCatId = clueCategoryCluesData.find(x => x.clues.find(y => y.id == identifier));
+    let foundClues = clueCategoryCluesData.find(x => x.id == thisCatId.id);
     foundClues = foundClues.clues.filter(x => getTheseValues.includes(x.value))
     .sort(function(a, b){return a.value - b.value});
     if (foundClues != null) {
@@ -106,7 +109,7 @@ function getClueById(identifier) {
             foundClues = onlyTheseClues;
         }
     }
-    var onlyOneClue = foundClues.find(x => x.id == identifier);
+    let onlyOneClue = foundClues.find(x => x.id == identifier);
     return onlyOneClue    
 }
 
@@ -115,8 +118,8 @@ function displayAnswer(identifier)
     // clear away buzz in button
     document.getElementById("userAnswerButton").innerHTML = "";
     document.getElementById("categories").style = "visibility: hidden;";
-    var divToEdit = document.getElementById("catClues");
-    var onlyOneClue = getClueById(identifier);
+    let divToEdit = document.getElementById("catClues");
+    let onlyOneClue = getClueById(identifier);
     divToEdit.innerHTML = '<div class="clueQuestionAlt">' + onlyOneClue.answer + '</div>';
     performTimeCountDown("answer", identifier);
 
@@ -124,8 +127,14 @@ function displayAnswer(identifier)
 
 function performTimeCountDown(clueOrAnswer, clueId)
 {
-    var timeDiv = document.getElementById("userTimer");
-    var timer = setInterval(function() {
+    let timeDiv = document.getElementById("userTimer");
+    // if (clueOrAnswer == "answer") {
+    //     // reduce the amount of time needed to end the countdown
+    //     timeCount = 5;
+    //     console.log("hit on where time should change...");
+    //     console.log(timeCount);
+    // }
+    let timer = setInterval(function() {
         console.log(timeCount);
         timeDiv.innerHTML = timeCount;
         timeCount--;
@@ -134,7 +143,7 @@ function performTimeCountDown(clueOrAnswer, clueId)
         }
       }, 1000);
       
-      var stopInterval = function() {
+      let stopInterval = function() {
         console.log('time is up!');
         if (clueOrAnswer == "clue") {
             displayAnswer(clueId);
@@ -152,14 +161,14 @@ function performTimeCountDown(clueOrAnswer, clueId)
 
 function performBuzzIn(clueId)
 {
-    var userAnswer = prompt("Please enter your answer");
+    let userAnswer = prompt("Please enter your answer");
     // perform same stripping of 'extra' characters as done on the clue
     // now if user enters: the Crusaders, checks only for Crusaders
     userAnswer = userAnswer.toLocaleLowerCase().replace('"',"").replace('"',"").replace('an ',"").replace('<i>',"").replace('</i>',"").replace('the ',"").replace("a ","");
     console.log("The user answer being checked has become " + userAnswer);
-    var clueAnswer = getClueById(clueId);
+    let clueAnswer = getClueById(clueId);
     // move back to direct comparison, except due some replacing on the clue answer to get rid of silly things.
-    var checkAgainstThisAnswer = clueAnswer.answer.toLocaleLowerCase().replace('"',"").replace('"',"").replace('an ',"").replace('<i>',"").replace('</i>',"").replace('the ',"").replace("a ","");
+    let checkAgainstThisAnswer = clueAnswer.answer.toLocaleLowerCase().replace('"',"").replace('"',"").replace('an ',"").replace('<i>',"").replace('</i>',"").replace('the ',"").replace("a ","");
     console.log("The clue answer being checked against has become " + checkAgainstThisAnswer);
 
     if (checkAgainstThisAnswer == userAnswer) {
