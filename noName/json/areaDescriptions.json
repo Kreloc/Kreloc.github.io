@@ -1,0 +1,75 @@
+[
+    {
+      "areaId":0,
+      "itemsInArea":false,
+      "monsterInArea":false,
+      "directionCameFrom":"South",
+      "description":"You walked into the forest of shadows. You are looking for the herb for the witch to cure your sick sibling. <p>A small fairy flies near you and offers to help guide you through the forest</p>",
+      "areaChoices":[
+        {
+          "output": "<p>North - Continue further on the path into the woods.</p>",
+          "text":"North",
+          "choiceDescription":"You moved further North into the woods, feeling a sense of dread as your footsteps echo off the trees surrounding you.",
+          "IsAvailable":true,
+          "IsMovement":true,
+          "IsLoadNewArea":true,
+          "IncrementAreaCountBy":1          
+        },
+        {
+          "output": "<p>South - The opening of the woods where you enetered. Returning without the herbs will be admitting to being a failure.</p>",
+          "text":"South",
+          "choiceDescription":"You moved South, running away from the woods and likely leaving your sister to die. This decision will weigh heavily on you.",
+          "IsAvailable":true,
+          "IsMovement":true,
+          "IsLoadNewArea":true,
+          "IncrementAreaCountBy":0,
+          "IsGameOver":true
+        },
+        {
+            "output":"<p>Search - Examine the forest floor</p>",
+            "text":"Search",
+            "choiceDescription":"You spend a minute looking around and find nothing",
+            "IsAvailable":true,
+            "IsMovement":false
+        }
+    ],
+    "stlyeData" : {"backgroundImgUrl":"/noName/images/forestbridge.jpg","textColor": "w3-text-white"}
+    },
+    {
+        "areaId":1,
+        "itemsInArea":true,
+        "monsterInArea":false,
+        "directionCameFrom":"South",
+        "description":"You trek further into the dark woods, hoping you can find the herb quickly. Your sibling does not have much time left. You see something shimmering on the ground in front of you",
+        "areaChoices":[
+            {
+            "output":"<p>North - Continue further on the path into the woods.</p>",
+            "text":"North",
+            "choiceDescription":"Praying that the herb you need is not too far away, you continue on the dark forested path.",
+            "IsAvailable":true,
+            "IsMovement":true,
+            "IsLoadNewArea":true,
+            "IncrementAreaCountBy":1
+        },
+            {
+                "output":"<p>South - The trail you just used is behind you.</p>",
+                "choiceDescription":"Thinking you may have missed something, you decide to turn around.",
+                "text":"South",
+                "IsAvailable":true,
+                "IsMovement":true,
+                "IsLoadNewArea":true,
+                "IncrementAreaCountBy":-1
+            },
+            {
+                "output":"<p>Search - Examine the shimmering item on the ground</p>",
+                "text":"Search",
+                "choiceDescription":"You spend a minute looking around and find a small dagger.",
+                "IsAvailable":true,
+                "IsMovement":false,
+                "IsItemFound":true,
+                "Item":{"Name":"Dagger","Damage":1}
+            }
+        ],
+        "stlyeData" : {"backgroundImgUrl":"/noName/images/creepyForestWall.jpg","textColor": "w3-text-white"}
+    }
+]
