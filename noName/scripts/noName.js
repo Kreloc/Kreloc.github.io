@@ -1,5 +1,6 @@
 // Code for noName simple game
 // var person = {firstName:"John", lastName:"Doe", age:50, eyeColor:"blue"};
+// this file is not being found. Making an edit and then saving to see if that resolves it.
 let areaCounter = 0;
 let validUserInput = [];
 let input = document.getElementById("userInput");
