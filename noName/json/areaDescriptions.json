@@ -73,5 +73,43 @@
             }
         ],
         "stlyeData" : {"backgroundImgUrl":"/noName/images/creepyForestWall.jpg","textColor": "w3-text-white"}
-    }
+    },
+    {
+        "areaId":2,
+        "itemsInArea":true,
+        "monsterInArea":true,
+        "title":"Fairy Enclave in the Forest of Shadows",
+        "directionCameFrom":"South",
+        "description":"You do not know what area of the forest you have made it to and it puts you slightly on ease how at ease you have become as soon as you stepped foot here",
+        "areaChoices":[
+          {
+            "output": "<p>Lay Down - Take a nap.</p>",
+            "text":"Sleep",
+            "choiceDescription":"You end up falling asleep due to the lulling nature of the feeling in this area.",
+            "IsAvailable":false,
+            "IsMovement":true,
+            "IsLoadNewArea":true,
+            "IncrementAreaCountBy":1,
+            "PercentChanceOfOccuring": 45       
+          },
+          {
+            "output": "<p>South - You no longer see a way back from where you came.</p>",
+            "text":"South",
+            "IsAvailable":false,
+            "IsMovement":true,
+            "IsLoadNewArea":true,
+            "IncrementAreaCountBy":0,
+            "IsGameOver":true
+          },
+          {
+              "output":"<p>Search - Examine the forest floor</p>",
+              "text":"Search",
+              "choiceDescription":"You spend a minute looking around and find an herb that you believe might be the one you need for your sister.",
+              "IsAvailable":true,
+              "IsMovement":false,
+              "PerformEncounter":true
+          }
+      ],
+      "stlyeData" : {"backgroundImgUrl":"/noName/images/forestbridge.jpg","textColor": "w3-text-white"}
+      }
 ]

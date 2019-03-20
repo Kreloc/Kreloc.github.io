@@ -26,6 +26,31 @@ const request = async () => {
     movementStrings = await movementStringsResponse.json();
 }
 
+let timeCount = 6;
+
+function performTimeCountDown(clueOrAnswer, clueId)
+{
+    let timer = setInterval(function() {
+        console.log(timeCount);
+        // timeDiv.innerHTML = timeCount;
+        timeCount--;
+        if(timeCount === 0) {
+          stopInterval()
+        }
+      }, 1000);
+      
+      let stopInterval = function() {
+        console.log('time is up!');
+        document.getElementById("areaChoiceResonse").innerHTML = "";
+        document.getElementById("areaDescription").style.visibility = "false";
+        document.getElementById("areaChoices").style.visibility = "false";
+        clearInterval(timer);
+        timeDiv.innerHTML = "";
+        // reset timeCount back to 11
+        timeCount = 6;
+      }
+}
+
 const otherRequest = async() => {
     let areaDescriptionsResponse = await fetch("/noName/json/areaDescriptions.json");
     areaDescriptions = await areaDescriptionsResponse.json();
@@ -129,6 +154,11 @@ function getChoiceResponse()
                 fillAreaDescriptionDivs(currentArea);
                 input.placeholder = placeholderStrings.randomElement();
             }
+            if (findUserChoice.PerformEncounter) {
+                console.log("combat was tirggered");
+                // TODO: implement logic in function for combat...
+                // TODO: Change input layout for combat   
+            }
         }
     }
 }
@@ -142,6 +172,8 @@ function interactWithArea(pickedChoice)
 {
     // TODO: Have this actually change the areaChoiceResponse based on what type of interaction and where it is.
     // Have array of strings attached to each area and their choices.
+    document.getElementById("areaDescription").style.visibility = "false";
+    document.getElementById("areaChoices").style.visibility = "false";
     console.log(pickedChoice);
     let areaChoiceResponseHtml = "";
     areaChoiceResponseHtml += "<p> you " + pickedChoice.text + ".</p>";
@@ -151,4 +183,8 @@ function interactWithArea(pickedChoice)
         player[0].Items.push(pickedChoice.Item);
         console.log(player);
     }
+    // timer go for six seconds before changing back to previous information
+    performTimeCountDown();
 }
+
+
