@@ -42,8 +42,8 @@ function performTimeCountDown(clueOrAnswer, clueId)
       let stopInterval = function() {
         console.log('time is up!');
         document.getElementById("areaChoiceResonse").innerHTML = "";
-        document.getElementById("areaDescription").style.visibility = "false";
-        document.getElementById("areaChoices").style.visibility = "false";
+        document.getElementById("areaDescription").style.visibility = "visible";
+        document.getElementById("areaChoices").style.visibility = "visible";
         clearInterval(timer);
         // timeDiv.innerHTML = "";
         // reset timeCount back to 11
