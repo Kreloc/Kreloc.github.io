@@ -14,6 +14,7 @@ let areaDescriptions = [];
 let placeholderStrings = [];
 let nonValidInputStrings = [];
 let player = [];
+let monsters = [];
 var currentArea = [];
 
 Array.prototype.randomElement  = function(){
@@ -221,6 +222,11 @@ const getNonValidInputStrings = async() => {
     let nonValidResponse = await fetch("/noName/json/nonValidInputStrings.json");
     nonValidInputStrings = await nonValidResponse.json();
 }
+
+const getMonsters = async() => {
+    let monsterResponse = await fetch("/noName/json/monsters.json");
+    monsters = await monsterResponse.json();
+}
 // Not currently using movementStrings. That was a previous concecpt.
 // request();
 otherRequest();
@@ -312,6 +318,9 @@ function getChoiceResponse()
             }
             if (findUserChoice.PerformEncounter) {
                 console.log("combat was tirggered");
+                // find monster to fight
+                let foundMonster = monsters.find(x => x.areaId == currentArea.areaId);
+                document.getElementById("areaSpecificImg").style.backgroundImage = "url('" + foundMonster.ImageUrl + "')";
                 // TODO: implement logic in function for combat...
                 // TODO: Change input layout for combat   
             }

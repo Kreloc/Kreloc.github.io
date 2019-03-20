@@ -1,0 +1,11 @@
+[
+    {
+        "Name":"Forest Spirit",
+        "Health":3,
+        "Defense":1,
+        "Attack":1,
+        "Accuracy":20,
+        "areaId":2,
+        "ImageUrl":"/noName/images/forestMonster.png"
+    }
+]
