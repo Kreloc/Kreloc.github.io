@@ -57,18 +57,19 @@ getNonValidInputStrings();
 console.log(input);
 
 
-function emptyContent()
+function emptyContent(newArea)
 {
+    console.log("attempting to empty div contents");
     document.getElementById("areaDescription").innerHTML = "";
     document.getElementById("areaChoices").innerHTML = "";
     document.getElementById("userInput").innerHTML = "";
-    document.getElementById("areaChoiceResonse").innerHTML = "";   
-
+    document.getElementById("areaChoiceResonse").value = "";   
 }
 
 function fillAreaDescriptionDivs(area)
 {
     console.log(area);
+    emptyContent();
     let areaTitle = document.getElementById("areaTitle");
     areaTitle.innerHTML = area.title;
     let areaDescriptionDiv = document.getElementById("areaDescription");
