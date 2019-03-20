@@ -21,10 +21,10 @@ Array.prototype.randomElement  = function(){
   }
 // show loading text???
 document.getElementById("areaDescription").innerHTML = "Loading...";
-const request = async () => {
-    let movementStringsResponse = await fetch("/noName/json/movementStrings.json");
-    movementStrings = await movementStringsResponse.json();
-}
+// const request = async () => {
+//     let movementStringsResponse = await fetch("/noName/json/movementStrings.json");
+//     movementStrings = await movementStringsResponse.json();
+// }
 
 let timeCount = 6;
 
@@ -72,7 +72,8 @@ const getNonValidInputStrings = async() => {
     let nonValidResponse = await fetch("/noName/json/nonValidInputStrings.json");
     nonValidInputStrings = await nonValidResponse.json();
 }
-request();
+// Not currently using movementStrings. That was a previous concecpt.
+// request();
 otherRequest();
 getPlaceHolderString();
 getPlayerInformation();
