@@ -1,5 +1,15 @@
 [
     {
+      "areaId":-1,
+      "itemsInArea":false,
+      "monsterInArea":false,
+      "title":"Death Comes to us all",
+      "directionCameFrom":"South",
+      "description":"You have died attempting to get the herb for your ill sibling.",
+      "areaChoices":[],
+    "stlyeData" : {"backgroundImgUrl":"/noName/images/tunnelDeath.jpg","textColor": "w3-text-white"}
+    },
+    {
       "areaId":0,
       "itemsInArea":false,
       "monsterInArea":false,
