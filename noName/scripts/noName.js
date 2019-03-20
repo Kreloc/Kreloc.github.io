@@ -321,7 +321,9 @@ function getChoiceResponse()
                 console.log("combat was tirggered");
                 // find monster to fight
                 let foundMonster = monsters.find(x => x.areaId == currentArea.areaId);
-                document.getElementById("areaSpecificImg").style.backgroundImage = "url('" + foundMonster.ImageUrl + "')";
+                // document.getElementById("areaSpecificImg").style.backgroundImage = "url('" + foundMonster.ImageUrl + "')";
+                // TODO: Restrict the size of the monster image somehow...the one I am using makes it pretty ridiculous.
+                document.getElementById("areaSpecificImg").innerHTML = '<img src="' + foundMonster.ImageUrl + '"></img>';
                 // TODO: implement logic in function for combat...
                 // TODO: Change input layout for combat   
             }
