@@ -304,6 +304,13 @@ function getChoiceResponse()
                 fillAreaDescriptionDivs(currentArea);
                 input.placeholder = placeholderStrings.randomElement();
             }
+            if (findUserChoice.IsRandomEncounter) {
+                var rollAgainst = dice.d100();
+                console.log("d100 check performed " + rollAgainst);
+                if (rollAgainst > findUserChoice.PercentChanceOfOccurance) {
+                    console.log("the random encounter was triggered");
+                }
+            }
             if (findUserChoice.PerformEncounter) {
                 console.log("combat was tirggered");
                 // TODO: implement logic in function for combat...

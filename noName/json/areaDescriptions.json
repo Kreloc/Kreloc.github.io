@@ -90,7 +90,8 @@
             "IsMovement":true,
             "IsLoadNewArea":true,
             "IncrementAreaCountBy":1,
-            "PercentChanceOfOccuring": 45       
+            "IsRandomEncounter":true,
+            "PercentChanceOfOccurance": 45       
           },
           {
             "output": "<p>South - You no longer see a way back from where you came.</p>",
