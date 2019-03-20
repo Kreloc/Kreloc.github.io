@@ -7,7 +7,7 @@
       "directionCameFrom":"South",
       "description":"You have died attempting to get the herb for your ill sibling.",
       "areaChoices":[],
-    "stlyeData" : {"backgroundImgUrl":"/noName/images/tunnelDeath.jpg","textColor": "w3-text-white"}
+    "stlyeData" : {"backgroundImgUrl":"/noName/images/tunnelDeath.jpg","textColor": "w3-text-dark-grey"}
     },
     {
       "areaId":0,
