@@ -173,8 +173,8 @@ function interactWithArea(pickedChoice)
 {
     // TODO: Have this actually change the areaChoiceResponse based on what type of interaction and where it is.
     // Have array of strings attached to each area and their choices.
-    document.getElementById("areaDescription").style.visibility = "false";
-    document.getElementById("areaChoices").style.visibility = "false";
+    document.getElementById("areaDescription").style.visibility = "hidden";
+    document.getElementById("areaChoices").style.visibility = "hidden";
     console.log(pickedChoice);
     let areaChoiceResponseHtml = "";
     areaChoiceResponseHtml += "<p> you " + pickedChoice.text + ".</p>";
