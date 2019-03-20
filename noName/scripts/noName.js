@@ -1,6 +1,8 @@
 // Code for noName simple game
 // var person = {firstName:"John", lastName:"Doe", age:50, eyeColor:"blue"};
 // this file is not being found. Making an edit and then saving to see if that resolves it.
+// TODO: Fix layout on mobile...once again have to request desktop site for it to look as intended. Arghhh!
+// TODO: Move away from w3schools css and implement my own.
 let areaCounter = 0;
 let validUserInput = [];
 let input = document.getElementById("userInput");
