@@ -69,7 +69,6 @@ function emptyContent()
 function fillAreaDescriptionDivs(area)
 {
     console.log(area);
-    <h1 class="w3-jumbo w3-animate-top"><div id="areaTitle"></div></h1>
     let areaTitle = document.getElementById("areaTitle");
     areaTitle.innerHTML = area.title;
     let areaDescriptionDiv = document.getElementById("areaDescription");
