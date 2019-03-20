@@ -97,9 +97,8 @@
             "text":"South",
             "IsAvailable":false,
             "IsMovement":true,
-            "IsLoadNewArea":true,
-            "IncrementAreaCountBy":0,
-            "IsGameOver":true
+            "IsLoadNewArea":false,
+            "IncrementAreaCountBy":0
           },
           {
               "output":"<p>Search - Examine the forest floor</p>",
@@ -110,6 +109,6 @@
               "PerformEncounter":true
           }
       ],
-      "stlyeData" : {"backgroundImgUrl":"/noName/images/forestbridge.jpg","textColor": "w3-text-white"}
+      "stlyeData" : {"backgroundImgUrl":"/noName/images/mysticalForestPath.jpg","textColor": "w3-text-white"}
       }
 ]
