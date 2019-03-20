@@ -16,6 +16,16 @@ body, html {height: 100%}
   background-position: center;
   background-size: cover;
 }
+input[list="languages"] {
+      width: 12em;
+      border: none;
+      background: #eee;
+    }
+    select {
+      width: 12em;
+      margin: 0;
+      margin-left: -12.75em;
+    }
 </style>
     <!-- <link rel="stylesheet" type="text/css" media="screen" href="main.css"> -->
     <!-- <script src="main.js"></script> -->
@@ -31,9 +41,24 @@ body, html {height: 100%}
             <div id="areaChoiceResonse"></div>
             <div id="areaDescription"></div>
             <div id="areaChoices"></div>
+            <div id="areaItems"></div>
             <div id="userChoice">
                 <input type="text" id="userInput" name="q">
+                
                 <button onclick="getChoiceResponse()">Go</button>
+                Choose: <input type="text" list="languages">
+                <label for="languages">
+                <datalist id="languages">
+                    <select>
+                    <option value="JavaScript">JavaScript</option>
+                    <option value="Haskell">Haskell</option>
+                    <option value="Ruby">Ruby</option>
+                    <option value="Go">Go</option>
+                    <option value="Python">Python</option>
+                    <option value="etc">etc</option>
+                    </select>
+                </datalist>
+                </label>
             </div>
         </div>
     </div>
