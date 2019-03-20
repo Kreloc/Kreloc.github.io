@@ -3,6 +3,7 @@
       "areaId":0,
       "itemsInArea":false,
       "monsterInArea":false,
+      "title":"Entering the Forest of Shadows",
       "directionCameFrom":"South",
       "description":"You walked into the forest of shadows. You are looking for the herb for the witch to cure your sick sibling. <p>A small fairy flies near you and offers to help guide you through the forest</p>",
       "areaChoices":[
@@ -40,6 +41,7 @@
         "itemsInArea":true,
         "monsterInArea":false,
         "directionCameFrom":"South",
+        "title":"Thickets of Tress in the Forest of Shadows",
         "description":"You trek further into the dark woods, hoping you can find the herb quickly. Your sibling does not have much time left. You see something shimmering on the ground in front of you",
         "areaChoices":[
             {

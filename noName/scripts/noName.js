@@ -57,9 +57,21 @@ getNonValidInputStrings();
 console.log(input);
 
 
+function emptyContent()
+{
+    document.getElementById("areaDescription").innerHTML = "";
+    document.getElementById("areaChoices").innerHTML = "";
+    document.getElementById("userInput").innerHTML = "";
+    document.getElementById("areaChoiceResonse").innerHTML = "";   
+
+}
+
 function fillAreaDescriptionDivs(area)
 {
     console.log(area);
+    <h1 class="w3-jumbo w3-animate-top"><div id="areaTitle"></div></h1>
+    let areaTitle = document.getElementById("areaTitle");
+    areaTitle.innerHTML = area.title;
     let areaDescriptionDiv = document.getElementById("areaDescription");
     areaDescriptionDiv.innerHTML = "<p>" + area.description + "</p>";
     let areaChoicesDiv = document.getElementById("areaChoices");
