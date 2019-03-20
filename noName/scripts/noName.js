@@ -166,7 +166,7 @@ Array.prototype.randomElement  = function(){
     ? window
     : exports);
 // End dice.js content
-var dice = new Dice(); // defaults to +new Date() as a seed, can use any number of arguments for seeding
+let dice = new Dice(); // defaults to +new Date() as a seed, can use any number of arguments for seeding
 
 // show loading text???
 document.getElementById("areaDescription").innerHTML = "Loading...";
