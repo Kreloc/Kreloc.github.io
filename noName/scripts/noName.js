@@ -27,7 +27,7 @@ function dynamicallyLoadScript(url) {
 
     document.head.appendChild(script);  // add it to the end of the head section of the page (could change 'head' to 'body' to add it to the end of the body section instead)
 }
-dynamicallyLoadScript("/scripts/dice.js");
+dynamicallyLoadScript("/noName/scripts/dice.js");
 var dice = new Dice(); // defaults to +new Date() as a seed, can use any number of arguments for seeding
 
 // show loading text???
