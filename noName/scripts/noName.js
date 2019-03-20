@@ -280,14 +280,24 @@ function getChoiceResponse()
                 document.getElementById("areaChoiceResonse").innerHTML = movementHtml;
                 moveArea(findUserChoice);
             }
-            else
-            {
-                // TODO: Have array of strings for each of the following user inputs as defined by another function, I think.
+            if (findUserChoice.IsAreaInteraction) {
                 interactWithArea(findUserChoice);
             }
             if (findUserChoice.IsGameOver) {
                 // TODO: Have death text
                 document.getElementById("areaDescription").innerHTML = "<p>You have died</p>";
+            }
+            if (findUserChoice.IsRandomEncounter) {
+                var rollAgainst = dice.d100();
+                console.log("d100 check performed " + rollAgainst);
+                if (rollAgainst > findUserChoice.PercentChanceOfOccurance) {
+                    console.log("the random encounter was triggered");
+                }
+            }
+            if (findUserChoice.PerformEncounter) {
+                console.log("combat was tirggered");
+                // TODO: implement logic in function for combat...
+                // TODO: Change input layout for combat   
             }
             if (findUserChoice.IsLoadNewArea) {
                 areaCounter = areaCounter + findUserChoice.IncrementAreaCountBy;
@@ -303,18 +313,6 @@ function getChoiceResponse()
                 bgImgDiv[0].className = divClass;
                 fillAreaDescriptionDivs(currentArea);
                 input.placeholder = placeholderStrings.randomElement();
-            }
-            if (findUserChoice.IsRandomEncounter) {
-                var rollAgainst = dice.d100();
-                console.log("d100 check performed " + rollAgainst);
-                if (rollAgainst > findUserChoice.PercentChanceOfOccurance) {
-                    console.log("the random encounter was triggered");
-                }
-            }
-            if (findUserChoice.PerformEncounter) {
-                console.log("combat was tirggered");
-                // TODO: implement logic in function for combat...
-                // TODO: Change input layout for combat   
             }
         }
     }

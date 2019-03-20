@@ -23,7 +23,7 @@
           "IsAvailable":true,
           "IsMovement":true,
           "IsLoadNewArea":true,
-          "IncrementAreaCountBy":0,
+          "IncrementAreaCountBy":-1,
           "IsGameOver":true
         },
         {
@@ -31,7 +31,7 @@
             "text":"Search",
             "choiceDescription":"You spend a minute looking around and find nothing",
             "IsAvailable":true,
-            "IsMovement":false
+            "IsAreaInteraction":true
         }
     ],
     "stlyeData" : {"backgroundImgUrl":"/noName/images/forestbridge.jpg","textColor": "w3-text-white"}
@@ -67,7 +67,7 @@
                 "text":"Search",
                 "choiceDescription":"You spend a minute looking around and find a small dagger.",
                 "IsAvailable":true,
-                "IsMovement":false,
+                "IsAreaInteraction":true,
                 "IsItemFound":true,
                 "Item":{"Name":"Dagger","Damage":1}
             }
@@ -80,33 +80,32 @@
         "monsterInArea":true,
         "title":"Fairy Enclave in the Forest of Shadows",
         "directionCameFrom":"South",
-        "description":"You do not know what area of the forest you have made it to and it puts you slightly on ease how at ease you have become as soon as you stepped foot here",
+        "description":"You do not know what area of the forest you stumbled onto. It puts you on edge how at ease you have become upon entering this area of the forest.",
         "areaChoices":[
           {
             "output": "<p>Lay Down - Take a nap.</p>",
             "text":"Lay Down",
             "choiceDescription":"You end up falling asleep due to the lulling nature of the feeling in this area.",
             "IsAvailable":true,
-            "IsMovement":false,
+            "IsAreaInteraction":true,
             "IsLoadNewArea":false,
-            "IncrementAreaCountBy":1,
             "IsRandomEncounter":true,
             "PercentChanceOfOccurance": 45       
           },
           {
             "output": "<p>South - You no longer see a way back from where you came.</p>",
             "text":"South",
-            "IsAvailable":false,
-            "IsMovement":true,
-            "IsLoadNewArea":false,
-            "IncrementAreaCountBy":0
+            "choiceDescription":"You cannot find a way to go back the way you had come. Where is a way out of here?",
+            "IsAvailable":true,
+            "IsMovement":false,
+            "IsLoadNewArea":false
           },
           {
               "output":"<p>Search - Examine the forest floor</p>",
               "text":"Search",
               "choiceDescription":"You spend a minute looking around and find an herb that you believe might be the one you need for your sister.",
               "IsAvailable":true,
-              "IsMovement":false,
+              "IsAreaInteraction":true,
               "PerformEncounter":true
           }
       ],
