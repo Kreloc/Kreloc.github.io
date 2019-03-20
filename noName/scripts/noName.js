@@ -233,6 +233,7 @@ otherRequest();
 getPlaceHolderString();
 getPlayerInformation();
 getNonValidInputStrings();
+getMonsters();
 // TODO: Have array of strings for the placeHolder text that can be radnomly or selective retrieved.
 // input.placeholder = "Enter choice";
 console.log(input);
