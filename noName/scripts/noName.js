@@ -265,7 +265,7 @@ function fillAreaDescriptionDivs(area)
 // </datalist>
     let areaOptions = document.getElementById("thisAreaChoices");
     let optionDataListHtml = "<select>";
-    area.areaChoices.find(x => x.IsAvailable).forEach(x => 
+    area.areaChoices.filter(x => x.IsAvailable).forEach(x => 
         optionDataListHtml += '<option value="' + x.text + '">' + x.text + '</option>');
     optionDataListHtml += '</select>';
     areaOptions.innerHTML = optionDataListHtml;
