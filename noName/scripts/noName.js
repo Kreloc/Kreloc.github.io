@@ -45,7 +45,7 @@ function performTimeCountDown(clueOrAnswer, clueId)
         document.getElementById("areaDescription").style.visibility = "false";
         document.getElementById("areaChoices").style.visibility = "false";
         clearInterval(timer);
-        timeDiv.innerHTML = "";
+        // timeDiv.innerHTML = "";
         // reset timeCount back to 11
         timeCount = 6;
       }
