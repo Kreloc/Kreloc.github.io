@@ -84,11 +84,11 @@
         "areaChoices":[
           {
             "output": "<p>Lay Down - Take a nap.</p>",
-            "text":"Sleep",
+            "text":"Lay Down",
             "choiceDescription":"You end up falling asleep due to the lulling nature of the feeling in this area.",
-            "IsAvailable":false,
-            "IsMovement":true,
-            "IsLoadNewArea":true,
+            "IsAvailable":true,
+            "IsMovement":false,
+            "IsLoadNewArea":false,
             "IncrementAreaCountBy":1,
             "IsRandomEncounter":true,
             "PercentChanceOfOccurance": 45       
