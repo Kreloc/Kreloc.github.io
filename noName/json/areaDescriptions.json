@@ -33,8 +33,7 @@
           "IsAvailable":true,
           "IsMovement":true,
           "IsLoadNewArea":true,
-          "IncrementAreaCountBy":-1,
-          "IsGameOver":true
+          "IncrementAreaCountBy":-1
         },
         {
             "output":"<p>Search - Examine the forest floor</p>",
