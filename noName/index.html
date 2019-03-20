@@ -43,12 +43,10 @@ input[list="languages"] {
             <div id="areaChoices"></div>
             <div id="areaItems"></div>
             <div id="userChoice">
-                <input type="text" id="userInput" name="q">
-                
-                <button onclick="getChoiceResponse()">Go</button>
-                Choose: <input type="text" list="languages">
-                <label for="languages">
-                <datalist id="languages">
+                <!-- <input type="text" id="userInput" name="q"> -->
+                <div id="placeHolderText">Choose: </div><input type="text" list="thisAreaChoices" id="userInput">
+                <label for="thisAreaChoices">
+                <datalist id="thisAreaChoices">
                     <select>
                     <option value="JavaScript">JavaScript</option>
                     <option value="Haskell">Haskell</option>
@@ -59,6 +57,8 @@ input[list="languages"] {
                     </select>
                 </datalist>
                 </label>
+                <button onclick="getChoiceResponse()">Go</button>
+
             </div>
         </div>
     </div>

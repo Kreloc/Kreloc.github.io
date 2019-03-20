@@ -253,6 +253,22 @@ function fillAreaDescriptionDivs(area)
     let areaChoicesHtml = "";
     area.areaChoices.forEach(x => areaChoicesHtml += x.output);
     areaChoicesDiv.innerHTML = areaChoicesHtml;
+    // //                 <datalist id="thisAreaChoices">
+// <select>
+// <option value="JavaScript">JavaScript</option>
+// <option value="Haskell">Haskell</option>
+// <option value="Ruby">Ruby</option>
+// <option value="Go">Go</option>
+// <option value="Python">Python</option>
+// <option value="etc">etc</option>
+// </select>
+// </datalist>
+    let areaOptions = document.getElementById("thisAreaChoices");
+    let optionDataListHtml = "<select>";
+    area.areaChoices.find(x => x.IsAvailable).forEach(x => 
+        optionDataListHtml += '<option value="' + x.text + '">' + x.text + '</option>');
+    optionDataListHtml += '</select>';
+    areaOptions.innerHTML = optionDataListHtml;
 }
 
 
@@ -341,5 +357,7 @@ function interactWithArea(pickedChoice)
     // timer go for six seconds before changing back to previous information
     performTimeCountDown();
 }
+
+
 
 
