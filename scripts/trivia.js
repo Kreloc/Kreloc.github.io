@@ -13,7 +13,7 @@ let getTheseValues = [200,400,600,800,1000];
 let score = 0;
 let onlyTheseClues = [];
 let foundAnId = "";
-let timeCount = 11;
+let timeCount = 5;
 
 // TODO: Reduce amount of time answer is displayed
 // TODO: Deal with answers that have values inside ()...typically these are not the answer rather an explanation of how it fits the clue category.
