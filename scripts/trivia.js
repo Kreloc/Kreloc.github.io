@@ -154,8 +154,8 @@ function performTimeCountDown(clueOrAnswer, clueId)
         }
         clearInterval(timer);
         timeDiv.innerHTML = "";
-        // reset timeCount back to 11
-        timeCount = 11;
+        // reset timeCount back to 5
+        timeCount = 5;
       }
 }
 
